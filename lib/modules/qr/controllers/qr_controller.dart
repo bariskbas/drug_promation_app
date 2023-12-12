@@ -8,17 +8,12 @@ import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class QrController extends GetxController {
   final formkey = GlobalKey<FormBuilderState>().obs;
-
+  final lastVideoId = "".obs;
   final mainFuture = Future.wait([]).obs;
 
   /*final newsData = PagesResponseData().obs;
   final newsFuture = Future.value(PagesResponseData()).obs;*/
-  YoutubePlayerController _controller = YoutubePlayerController(
-      initialVideoId: 'tolo0e7um3w',
-      flags: YoutubePlayerFlags(
-        autoPlay: true,
-        mute: true,
-      ));
+
   @override
   void onInit() {
     super.onInit();
@@ -37,27 +32,4 @@ class QrController extends GetxController {
     });
   }
 
-  void tagRead() async {
-    globalDialog(
-      textConfirm: 'Kapat',
-      onConfirm: () {
-        Get.close(1);
-      },
-      title: 'Bilgilendirme Videosu',
-      content: Column(
-        children: [
-          YoutubePlayer(
-            controller: _controller,
-            showVideoProgressIndicator: true,
-            progressColors: ProgressBarColors(
-              playedColor: Colors.amber,
-              handleColor: Colors.amberAccent,
-            ),
-          ),
-          SizedBox(height: 10,),
-          Text('Destek İçin Bizi Arayınız : +90 (5**) *** ** **')
-        ],
-      ),
-    );
-  }
 }
